@@ -1,0 +1,155 @@
+/* logo animation */
+#logo{
+    animation: myAnimation 5s;
+}
+/* changes the size of the header for the animation */
+@keyframes myAnimation{
+    0% {width: 25px; opacity: 0;}
+    100% {width: 475px; opacity: 1;}
+}
+/* sets the font of the body, the background image, and the color */
+body{
+    font-family: 'Poppins', serif;
+    background-image: url(../images/concrete_seamless.png);
+    background-color: #f1f1f1;
+}
+/* set the header in the center, as well as the nav links*/
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* allows nav links class to use flex */
+.nav_links{
+    display: flex;
+    flex-direction: column;
+}
+/* links are same color after being visited */
+a:visited{
+    color: blue;
+}
+/* changes each card header with appropriate settings */
+.card > header{
+    background: #288088;
+    border: solid 2px #45ADAD;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+/* top of the card beneath the header must have a curved border */
+.card{
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+/* each card should have an initial size of 450px */
+.card{
+    flex-basis: 450px;
+}
+/* place cards in the center on their own rows */
+.pricing{
+    display: flex;
+    /* use row wrap to put each card on different rows */
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+/* styling all images in the gallery class */
+.gallery img{
+    border: solid 10px #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+/* centering all the pictures and wrapping them to additonal lines */
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media screen and (min-width: 900px){
+
+    /* move the logo to the far left*/
+    header{
+        display: flex;
+        flex-direction: row;
+    }
+    /* added to help move the nav links to the right */
+    nav{
+        width: 100%;
+    }
+    /* move the nav links to the right */
+    .nav_links{
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+    }
+    /* make the cards be on the same line in the middle */
+    .pricing{
+        display: flex;
+        flex-direction: row;
+        flex-flow: nowrap;
+        justify-content: center;
+    }
+    /* set the initial size of the cards to 275px */
+    .card{
+        flex-basis: 275px;
+
+    }
+    /* keeps the header at the top when you scroll */
+    body > header{
+        position: fixed;
+        width: 100%;
+    }
+    /* adds extra padding so you can see the first heading */
+    .about{
+        padding-top: 110px;
+    }
+
+}
+
+@media (prefers-reduced-motion){
+    /* removes the animation by setting the time to 0 */
+    #logo{
+        animation: myAnimation 0s;
+    }
+}
+
+@media print{
+    /* setting the font and removing the background image */
+    body{
+        font-family: Arial, Helvetica;
+        background-image: none;
+    }
+    /* added to help move the nav links */
+    nav{
+        width: 100%;
+    }
+    /* moving the nav links to have space between them */
+    .nav_links{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    /* sets them on the same line with same bottom alignment*/
+    .pricing{
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: flex-end;
+    }
+    /* sets the border for each card and initial size */
+    .card{ 
+        border: solid 2px #45ADDD;
+        flex-basis: 325px;
+    }
+    /* removes the gallery fully */
+    .gallery, h2{
+        visibility: hidden;
+    }
+    /* adds a thumbs up to each card */
+    .card ul li:nth-child(2)::after{
+        content: "\1F44D";
+    }
+
+}
+
